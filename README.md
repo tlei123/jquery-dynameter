@@ -1,5 +1,6 @@
 jquery-dynameter
 ================
+http://github.com/tlei123/jquery-dynameter
 
 by Tze Lei (tclei2009@gmail.com)
 
@@ -20,6 +21,7 @@ Add a div with a unique id to your body section:
 Initialize and assign it to a variable [put this script tag below the DynaMeter script tag]:
 
     <script type="text/javascript">
+      var $myMeter = null;
       $( function () {
         $myMeter = $('#meterDiv').dynameter({
           label: 'My Meter',
@@ -31,4 +33,8 @@ Initialize and assign it to a variable [put this script tag below the DynaMeter 
       });
     </script>
 
-Go to http://tze1.com/dynameter/index.html for more details.
+Update your meter instance's value-indicator with changeValue method on you variable:
+
+    $myMeter.changeValue(88);
+
+
