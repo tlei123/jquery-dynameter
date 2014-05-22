@@ -57,8 +57,8 @@
                 var myDeg = myRelVal / myRange * 180;
                 $this.find('.dm-maskDiv').css({
                     '-webkit-transform': 'rotate(' + myDeg + 'deg)',
-                '-moz-border-radius': 'rotate(' + myDeg + 'deg)',
-                'border-radius': 'rotate(' + myDeg + 'deg)'
+                    '-moz-border-radius': 'rotate(' + myDeg + 'deg)',
+                    'border-radius': 'rotate(' + myDeg + 'deg)'
                 });
                 // Set/update dm-value attr.
                 $this.data('dm-value', myVal);

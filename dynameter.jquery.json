@@ -1,13 +1,13 @@
 {
     "name": "dynameter",
     "title": "jQuery DynaMeter",
-    "description": "jQuery plugin for dynamic, semi-circular value meter.",
+    "description": "jQuery plugin for dynamic, semi-circular value meter.  Transforms your empty div into a meter that supports real-time value changes.",
     "keywords": [
         "dynamic",
         "meter",
         "display"
     ],
-    "version": "0.1.1",
+    "version": "0.1.2",
     "author": {
         "name": "Tze Lei",
         "url": "https://github.com/tlei123/jquery-dynameter"
