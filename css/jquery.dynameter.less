@@ -1,0 +1,92 @@
+/* jQuery DynaMeter Stylesheet */
+/* 	Do NOT set pixel-based dimensions or positions.
+*	Do NOT set any font-size for div.dm-wrapperDiv.
+*	Dimensions, positions, and div.dm-wrapperDiv base font-size are set in plugin js.
+*/
+
+@outerDivBorder: 2px solid #999;
+@outerDivBgColor: #090;
+@maskDivBgColor: #ddd;
+@innerDivBgColor: #eee;
+@fontFamily: Arial, Helvetica, sans-serif;
+@fontWeight: bold;
+@lineHeight: 1.0;
+@textTransform: uppercase;
+
+
+.xBoxSizing(@val: border-box) {
+	-webkit-box-sizing: @val;
+	-moz-box-sizing: @val;
+	box-sizing: @val;
+}
+.xBoxReset(@sizingVal: border-box) {
+	.xBoxSizing(@sizingVal);
+	margin: 0;
+	padding: 0;
+	zoom: 1;
+}
+
+
+div.dm-wrapperDiv {
+	display: block;
+	position: relative;
+	.xBoxReset;
+	overflow: hidden;
+	font-family: @fontFamily;
+	font-weight: @fontWeight;
+	line-height: @lineHeight;
+
+	* {
+		.xBoxReset;
+	}
+
+	div {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+
+	div.dm-canvas, div.dm-maskDiv {
+		border: @outerDivBorder;
+		border-bottom: 0;
+	}
+	div.dm-maskDiv {
+		background-color: @maskDivBgColor;
+		-webkit-transform-origin: center bottom;
+		-moz-transform-origin: center bottom;
+		-ms-transform-origin: center bottom;
+		transform-origin: center bottom;
+		z-index: 1;
+	}
+	div.dm-innerDiv {
+		padding-top: .7em;
+		background-color: @innerDivBgColor;
+		text-align: center;
+		text-transform: @textTransform;
+		z-index: 2;
+
+		p {
+			margin: 3px auto;
+			width: auto;
+			max-width:  85%;
+			overflow: hidden;
+			text-align: center;
+
+			&.dm-valueP {
+				font-size: 210%;
+				line-height: .85;
+			}
+
+			&.dm-unitP {
+				margin-top: 0;
+				font-size: 75%;
+				font-weight: normal;
+			}
+			&.dm-labelP {
+				font-size: 100%;
+			}
+		}
+
+	}
+
+}

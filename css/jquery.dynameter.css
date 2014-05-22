@@ -1,0 +1,71 @@
+/* jQuery DynaMeter Stylesheet */
+/* 	Do NOT set pixel-based dimensions or positions.
+*	Do NOT set any font-size for div.dm-wrapperDiv.
+*	Dimensions, positions, and div.dm-wrapperDiv base font-size are set in plugin js.
+*/
+div.dm-wrapperDiv {
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  zoom: 1;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 1;
+}
+div.dm-wrapperDiv * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  zoom: 1;
+}
+div.dm-wrapperDiv div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+div.dm-wrapperDiv div.dm-canvas,
+div.dm-wrapperDiv div.dm-maskDiv {
+  border: 2px solid #999999;
+  border-bottom: 0;
+}
+div.dm-wrapperDiv div.dm-maskDiv {
+  background-color: #dddddd;
+  -webkit-transform-origin: center bottom;
+  -moz-transform-origin: center bottom;
+  -ms-transform-origin: center bottom;
+  transform-origin: center bottom;
+  z-index: 1;
+}
+div.dm-wrapperDiv div.dm-innerDiv {
+  padding-top: .7em;
+  background-color: #eeeeee;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 2;
+}
+div.dm-wrapperDiv div.dm-innerDiv p {
+  margin: 3px auto;
+  width: auto;
+  max-width: 85%;
+  overflow: hidden;
+  text-align: center;
+}
+div.dm-wrapperDiv div.dm-innerDiv p.dm-valueP {
+  font-size: 210%;
+  line-height: .85;
+}
+div.dm-wrapperDiv div.dm-innerDiv p.dm-unitP {
+  margin-top: 0;
+  font-size: 75%;
+  font-weight: normal;
+}
+div.dm-wrapperDiv div.dm-innerDiv p.dm-labelP {
+  font-size: 100%;
+}
