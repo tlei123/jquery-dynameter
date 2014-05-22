@@ -28,7 +28,6 @@
     "bugs": "https://github.com/tlei123/jquery-dynameter/issues",
     "homepage": "https://github.com/tlei123/jquery-dynameter",
     "docs": "https://github.com/tlei123/jquery-dynameter",
-    "download": "http://code.jquery.com/#dynameter",
     "dependencies": {
         "jquery": ">=1.10"
     }
