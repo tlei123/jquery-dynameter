@@ -4,17 +4,10 @@
         var defaults = {
             label: 'DynaMeter',
             value: 50,
-            newValue: null,
             min: 0,
             max: 100,
             regions: {  // Value-keys and color-refs.  E.g., value: 'normal'|'warn|'error', etc.
                 0: 'normal'
-            },
-
-            _colors: {
-                normal: '#228B22',  // green.
-                warn: '#DAA520',  // yellow.
-                error: '#FF0000'  // red.
             }
         };
 
@@ -33,7 +26,7 @@
             var myDeg = myRelVal / myRange * 180;
             $this.find('.dm-maskDiv').css({
                 '-webkit-transform': 'rotate(' + myDeg + 'deg)',
-                '-moz-border-radius': 'rotate(' + myDeg + 'deg)',
+                '-moz-transform': 'rotate(' + myDeg + 'deg)',
                 '-ms-transform': 'rotate(' + myDeg + 'deg)',
                 'border-radius': 'rotate(' + myDeg + 'deg)'
             });
@@ -56,7 +49,7 @@
                 var myDeg = myRelVal / myRange * 180;
                 $this.find('.dm-maskDiv').css({
                     '-webkit-transform': 'rotate(' + myDeg + 'deg)',
-                    '-moz-border-radius': 'rotate(' + myDeg + 'deg)',
+                    '-moz-transform': 'rotate(' + myDeg + 'deg)',
                     '-ms-transform': 'rotate(' + myDeg + 'deg)',
                     'border-radius': 'rotate(' + myDeg + 'deg)'
                 });
@@ -96,7 +89,7 @@
                         // console.log('[dynameter.getAngleFromValue] ERROR: myValue is outside value range!');
                         return null;
                     }
-                    return parseInt((myVal - settings.min) / (settings._range) * 180);
+                    return parseInt((myVal - $this.data('dm-min')) / $this.data('dm-range') * 180);
                 };
 
                 // Color stops for indicator color-bands [[angle, color-reference],...].
