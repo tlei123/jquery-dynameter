@@ -37,4 +37,4 @@ Update your meter instance's value-indicator with changeValue method on you vari
 
     $myMeter.changeValue(88);
 
-
+See http://tze1.com/dynameter/ for more details.
