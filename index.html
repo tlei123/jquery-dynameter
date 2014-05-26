@@ -19,11 +19,11 @@
 			<a href="https://github.com/tlei123/jquery-dynameter/archive/master.zip">Download v.0.1 beta</a>!</p>
 		<p>Requires <a href="http://www.jquery.com/" target="_blank">jQuery</a> 1.10.2 or newer</p>
 
-		<h2 id="demoHdr">Demo</h2>
-		<div id="payloadMeterDiv"></div>
-		<p>A jQuery-UI Slider instance is provided below to demonstrate real-time value updates.<br>Drag the handle to change the value above:</p>
-		<div id="payloadSliderDiv"></div>
-		<p>After <a href="#setupHdr">stylesheet and scripts setup</a>, all the code needed to make the above demo work is:<br>
+		<h2 id="demoHdr">Demos</h2>
+		<div id="payloadMeterDiv"></div><div id="fuelMeterDiv"></div>
+		<p>A jQuery-UI Slider instances were added below to demonstrate real-time value updates.<br>Drag a handle to update the corresponding DynaMeter above:</p>
+		<div id="payloadSliderDiv"></div><div id="fuelSliderDiv"></div>
+		<p>After <a href="#setupHdr">stylesheet and scripts setup</a>, the Payload (above-left) demo was &ldquo;DynaMeter-ized&rdquo; with:</p>
 			<pre class="sh_javascript">$( function () {
 	var $myPayloadMeter = $('#payloadMeterDiv').dynameter({
 		// REQUIRED.
@@ -46,7 +46,7 @@
 			$myPayloadMeter.changeValue(ui.value);
 		}
 	});
-});</pre></p>
+});</pre>
 
 		<h2 id="setupHdr">Setup</h2>
 		<ol>
@@ -68,7 +68,7 @@
 		</ol>
 		<h2 id="usageHdr">Usage</h2>
 		<ol>
-			<li>Create a &lt;div&gt; tag in your &ltbody&gt; section with a unique id -- you'll need to identify this element specifically in order to update its value-indicator.<br>
+			<li>Create a &lt;div&gt; tag in your &lt;body&gt; section with a unique id -- you'll need to identify this element specifically in order to update its value-indicator.<br>
 				<pre class="sh_html">&lt;div id="payloadMeterDiv"&gt;&lt;/div&gt;</pre></li>
 			<li>DynaMeter-ize your DIV tag (initialize it) with your own script tag BELOW the DynaMeter script tag, where you decclare a variable and call the DynaMeter method on your &lt;div&gt; for it.<br>
 				You'll use this var to update the indicator-value.  The required initialization settings are shown below:<br>
@@ -77,7 +77,6 @@
 	$( function () {
 		$payloadMeter = $('div#payloadMeterDiv').dynameter({
 			// REQUIRED.
-			width: 200,
 			label: 'Payload',
 			value: 500,
 			unit: 'lbs',
@@ -118,9 +117,10 @@
 	<script type="text/javascript" src="js/jquery.dynameter.js"></script>
 	<script type="text/javascript">
 		$( function () {
-			$('pre.sh_html').snippet('html',{style:"dull",showNum:false});
-			$('pre.sh_javascript').snippet('javascript',{style:"dull",showNum:false});
-			// No need to declare $myPayloadMeter outside this anonymous function, because the value-update code's also inside here.
+			// No need to declare DynaMeter vars outside this anonymous function, 
+			// because the value-update code's also inside here.
+
+			// Initialize payload meter and slider.
 		    var $myPayloadMeter = $("div#payloadMeterDiv").dynameter({
 		    	width: 200,
 		    	label: 'payload',
@@ -142,8 +142,37 @@
 		    		$myPayloadMeter.changeValue(ui.value);
 		    	}
 		    });
+
+		    // Initialize score meter and slider.
+		    var $myScoreMeter = $("div#fuelMeterDiv").dynameter({
+		    	width: 200,
+		    	label: 'fuel',
+		    	value: 7.5,
+		    	min: 0,
+		    	max: 15,
+		    	unit: 'gal',
+		    	regions: {
+		    		0: 'error',
+		    		.5: 'warn',
+		    		1.5: 'normal'
+		    	}
+		    });
+		    $('div#fuelSliderDiv').slider({
+		    	min: 0,
+		    	max: 15,
+		    	value: 7.5,
+		    	step: .1,
+		    	slide: function (evt, ui) {
+		    		$myScoreMeter.changeValue(ui.value);
+		    	}
+		    });
+
+			// Initialize code panels.
+			$('pre.sh_html').snippet('html',{style:"dull",showNum:false});
+			$('pre.sh_javascript').snippet('javascript',{style:"dull",showNum:false});
 		});
 	</script>
+
 </body>
 
 </html>

@@ -4,19 +4,28 @@
 *	Dimensions, positions, and div.dm-wrapperDiv base font-size are set in plugin js.
 */
 
+@meterWidth: 200px;
+@clrBandWidth: @meterWidth * 0.10;
 @outerDivBorder: 2px solid #999;
 @outerDivBgColor: #090;
 @maskDivBgColor: #ddd;
 @innerDivBgColor: #eee;
 @fontFamily: Arial, Helvetica, sans-serif;
+@baseFontSize: @meterWidth * 0.08;
 @fontWeight: bold;
 @lineHeight: 1.0;
 @textTransform: uppercase;
+
+/* Indicator bg-colors */
+@bgClrNormal: #228B22;
+@bgClrWarn: #DAA520;
+@bgClrError: #FF0000;
 
 
 .xBoxSizing(@val: border-box) {
 	-webkit-box-sizing: @val;
 	-moz-box-sizing: @val;
+	-ms-box-sizing: @val;
 	box-sizing: @val;
 }
 .xBoxReset(@sizingVal: border-box) {
@@ -25,6 +34,12 @@
 	padding: 0;
 	zoom: 1;
 }
+.xBorderRadiusDm(@radius: 100px) {
+	-webkit-border-radius: @radius @radius 0 0;
+	-moz-border-radius: @radius @radius 0 0;
+	-ms-border-radius: @radius @radius 0 0;
+	border-radius: @radius @radius 0 0;
+}
 
 
 div.dm-wrapperDiv {
@@ -32,7 +47,10 @@ div.dm-wrapperDiv {
 	position: relative;
 	.xBoxReset;
 	overflow: hidden;
+	width: @meterWidth;
+	height: @meterWidth / 2;
 	font-family: @fontFamily;
+	font-size: @baseFontSize;
 	font-weight: @fontWeight;
 	line-height: @lineHeight;
 
@@ -46,24 +64,48 @@ div.dm-wrapperDiv {
 		left: 0;
 	}
 
-	div.dm-canvas, div.dm-maskDiv {
+	div.dm-bgClrDiv, div.dm-maskDiv {
+		width: @meterWidth;
+		height: @meterWidth / 2;
+	}
+	div.dm-bgClrDiv, div.dm-maskDiv {
+		.xBorderRadiusDm;
 		border: @outerDivBorder;
 		border-bottom: 0;
-	}
-	div.dm-maskDiv {
-		background-color: @maskDivBgColor;
 		-webkit-transform-origin: center bottom;
 		-moz-transform-origin: center bottom;
 		-ms-transform-origin: center bottom;
 		transform-origin: center bottom;
-		z-index: 1;
+	}
+	div.dm-bgClrDiv {
+		&.normal {
+			background-color: @bgClrNormal;
+		}
+		&.warn {
+			background-color: @bgClrWarn;
+		}
+		&.error {
+			background-color: @bgClrError;
+		}
+	}
+	div.dm-maskDiv {
+		background-color: @maskDivBgColor;
+		z-index: 4;
 	}
 	div.dm-innerDiv {
+		@innerWidth: @meterWidth - (@clrBandWidth * 2);
+		@innerHeight: (@meterWidth / 2) - @clrBandWidth;
+		bottom: 0;
+		left: @clrBandWidth;
+		.xBorderRadiusDm((@innerHeight));
+		border-bottom: 1px solid @innerDivBgColor;
+		width: @innerWidth;
+		height: @innerHeight;
 		padding-top: .7em;
 		background-color: @innerDivBgColor;
 		text-align: center;
 		text-transform: @textTransform;
-		z-index: 2;
+		z-index: 5;
 
 		p {
 			margin: 3px auto;

@@ -32,6 +32,35 @@
 	font-family: @fontFamily;
 	font-size: @fontSize;
 
+	div.dm-wrapperDiv {
+		.xBoxReset;
+		display: inline-block;
+		margin: 0 10px;
+	}
+
+	div.ui-slider {
+		.xBoxReset;
+		display: inline-block;
+		height: 23px;
+		margin: 5px 22px 10px;
+		width: 175px;
+		height: 5px;
+		background-color: #333 !important;
+		background-image: none;
+
+		.ui-slider-handle {
+			margin-top: -5px;
+			border: 2px solid #000;
+			background-image: none;
+			background-color: #aaa;
+			cursor: pointer;
+			.xBoxShadow;
+		}
+	}
+	div#payloadMeterDiv, div#payloadSliderDiv {
+		float: left;
+	}
+
 	li {
 		margin-top: 1.5em;
 		font-size: .875em;
@@ -64,24 +93,6 @@
 
 		}
 
-	}
-
-	#payloadSliderDiv {
-		.xBoxReset;
-		margin: 5px 0 20px 10px;
-		width: 175px;
-		height: 5px;
-		background-color: #333 !important;
-		background-image: none;
-
-		.ui-slider-handle {
-			margin-top: -5px;
-			border: 2px solid #000;
-			background-image: none;
-			background-color: #aaa;
-			cursor: pointer;
-			.xBoxShadow;
-		}
 	}
 }
 
