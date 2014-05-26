@@ -70,7 +70,7 @@
 		<ol>
 			<li>Create a &lt;div&gt; tag in your &lt;body&gt; section with a unique id -- you'll need to identify this element specifically in order to update its value-indicator.<br>
 				<pre class="sh_html">&lt;div id="payloadMeterDiv"&gt;&lt;/div&gt;</pre></li>
-			<li>DynaMeter-ize your DIV tag (initialize it) with your own script tag BELOW the DynaMeter script tag, where you decclare a variable and call the DynaMeter method on your &lt;div&gt; for it.<br>
+			<li>DynaMeter-ize your DIV tag (initialize it) with your own script tag BELOW the DynaMeter script tag, where you declare a variable and call the DynaMeter method on your &lt;div&gt; for it.<br>
 				You'll use this var to update the indicator-value.  The required initialization settings are shown below:<br>
 				<pre class="sh_javascript">&lt;script type="text/javascript"&gt;
 	var $payloadMeter = null;
@@ -148,8 +148,8 @@
 		    	width: 200,
 		    	label: 'fuel',
 		    	value: 7.5,
-		    	min: 0,
-		    	max: 15,
+		    	min: 0.0,
+		    	max: 15.0,
 		    	unit: 'gal',
 		    	regions: {
 		    		0: 'error',
@@ -158,12 +158,12 @@
 		    	}
 		    });
 		    $('div#fuelSliderDiv').slider({
-		    	min: 0,
-		    	max: 15,
+		    	min: 0.0,
+		    	max: 15.0,
 		    	value: 7.5,
 		    	step: .1,
 		    	slide: function (evt, ui) {
-		    		$myScoreMeter.changeValue(ui.value);
+		    		$myScoreMeter.changeValue((ui.value).toFixed(1));
 		    	}
 		    });
 

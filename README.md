@@ -28,6 +28,7 @@ Initialize and assign it to a variable [put this script tag below the DynaMeter 
       var $myMeter = null;
       $( function () {
         $myMeter = $('#meterDiv').dynameter({
+          // REQUIRED.
           label: 'My Meter',
           value: 50,
           min: 0,
@@ -39,6 +40,6 @@ Initialize and assign it to a variable [put this script tag below the DynaMeter 
 
 Update your meter instance's value-indicator with changeValue method on you variable:
 
-    $myMeter.changeValue(88);
+    $myMeter.changeValue(88.toFixed(0));
 
 See http://tze1.com/dynameter/ for more details.
