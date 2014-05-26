@@ -1,8 +1,12 @@
-jquery-dynameter
-================
+# jQuery-DynaMeter
+
 http://github.com/tlei123/jquery-dynameter
 
 by Tze Lei (tclei2009@gmail.com)
+
+See Demos at http://tze1.com/dynameter/
+
+## Setup and Usage:
 
 Link jquery.dynameter.css stylesheet into your head section [adjust path as needed]:
 
