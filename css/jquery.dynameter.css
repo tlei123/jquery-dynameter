@@ -1,8 +1,4 @@
 /* jQuery DynaMeter Stylesheet */
-/* 	Do NOT set pixel-based dimensions or positions.
-*	Do NOT set any font-size for div.dm-wrapperDiv.
-*	Dimensions, positions, and div.dm-wrapperDiv base font-size are set in plugin js.
-*/
 /* Indicator bg-colors */
 div.dm-wrapperDiv {
   display: block;
