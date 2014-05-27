@@ -28,9 +28,10 @@
 	var $myPayloadMeter = $('#payloadMeterDiv').dynameter({
 		// REQUIRED.
 		label: 'payload',
-		value: '500',
-		min: '0',
-		max: '1000',
+		value: 500,
+		unit: 'lbs'
+		min: 0,
+		max: 1000,
 		regions: {
 			800: 'warn',
 			900: 'error'
@@ -88,22 +89,23 @@
 			<li>To update your DynaMeter-instance value-indicator in your own script, call DynaMeter's public changeValue method on your variable:<br>
 				<pre class="sh_javascript">$payloadMeter.changeValue(238);</pre></li>
 			<li>To add warning and/or error regions to your DynaMeter instance, add a regions object to your initialization settings:<br>
-				<pre class="sh_javascript">// Higher values are better...
+				<pre class="sh_javascript">// Higher values are worse...
 ...dynameter({
-	...
+	...,
 	regions: {
-		850: 'warn',  // 'warn' if value is 850 or more, but less than 950.
-		950: 'error'  // 'error' if value is 950 or more.
+		850: 'warn',  // 'warn' if 850 or more, but less than 950.
+		950: 'error'  // 'error' if 950 or more.
 	}
 });
   
-// Higher values are worse...
+// Higher values are better...
+// Must begin with 0 or min.
 ...dynameter({
-	...
+	...,
 	regions: {
-		0: 'error',  // 'error' if value is less than 6.
-		6: 'warn',  // 'warn' if value is less than 16, but more than or equal to 6.
-		16: 'normal' // 'normal' of value is 16 or more.
+		0: 'error',  // 'error' if less than 0.5.
+		0.5: 'warn',  // 'warn' if less than 1.5, but 0.5 or more.
+		1.5: 'normal' // 'normal' if 1.5 or more.
 	}
 });</pre>
 				[See <a href="#demoHdr">Demo</a>]
