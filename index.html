@@ -29,7 +29,7 @@
 		// REQUIRED.
 		label: 'payload',
 		value: 500,
-		unit: 'lbs'
+		unit: 'lbs',
 		min: 0,
 		max: 1000,
 		regions: {
@@ -93,8 +93,8 @@
 ...dynameter({
 	...,
 	regions: {
-		850: 'warn',  // 'warn' if 850 or more, but less than 950.
-		950: 'error'  // 'error' if 950 or more.
+		800: 'warn',  // 'warn' if 850 or more, but less than 950.
+		900: 'error'  // 'error' if 950 or more.
 	}
 });
   
