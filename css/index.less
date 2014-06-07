@@ -1,5 +1,6 @@
 @fontFamily: Arial, Helvetica, sans-serif;
 @fontSize: 16px;
+@lineHeight: 1.3;
 @fontWeight: bold;
 
 
@@ -14,10 +15,15 @@
 	padding: 0;
 	zoom: 1;
 }
-.xBoxShadow {
-	-webkit-box-shadow: 2px 3px 3px 1px #AAA;
-	-moz-box-shadow: 2px 3px 3px 1px #AAA;
-	box-shadow: 2px 2px 3px 1px #AAA;
+.xBoxShadow (@x: 2px, @y: 2px, @blur: 3px, @spread: 1px, @color: #888) {
+	-webkit-box-shadow: @x @y @blur @spread @color;
+	-moz-box-shadow: @x @y @blur @spread @color;
+	box-shadow: @x @y @blur @spread @color;
+}
+.xBorderRadius (@val: 5px) {
+	-webkit-border-radius: @val;
+	-moz-border-radius: @val;
+	border-radius: @val;
 }
 
 #container {
@@ -31,6 +37,7 @@
 	overflow: hidden;
 	font-family: @fontFamily;
 	font-size: @fontSize;
+	line-height: @lineHeight;
 
 	div.dm-wrapperDiv {
 		.xBoxReset;
@@ -50,11 +57,14 @@
 
 		.ui-slider-handle {
 			margin-top: -5px;
+			width: 1em;
+			height: 1.4em;
 			border: 2px solid #000;
 			background-image: none;
 			background-color: #aaa;
 			cursor: pointer;
 			.xBoxShadow;
+			.xBorderRadius;
 		}
 	}
 	div#payloadMeterDiv, div#payloadSliderDiv {
@@ -75,7 +85,7 @@
 
 		pre.sh_sourceCode {
 			padding: 20px 0 0;
-			line-height: 1.25em;
+			line-height: 1.25;
 			background-color: #ddd !important;
 
 			&.snippet-textonly {
