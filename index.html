@@ -89,23 +89,23 @@
 			<li>To update your DynaMeter-instance value-indicator in your own script, call DynaMeter's public changeValue method on your variable:<br>
 				<pre class="sh_javascript">$payloadMeter.changeValue(238);</pre></li>
 			<li>To add warning and/or error regions to your DynaMeter instance, add a regions object to your initialization settings:<br>
-				<pre class="sh_javascript">// Higher values are worse...
+				<pre class="sh_javascript">// Higher values are worse (e.g. Payload demo above)...
 ...dynameter({
 	...,
 	regions: {
-		800: 'warn',  // 'warn' if 850 or more, but less than 950.
-		900: 'error'  // 'error' if 950 or more.
+		800: 'warn',  // 'warn' if 850 pounds or more, but less than 950 pounds.
+		900: 'error'  // 'error' if 950 pounds or more.
 	}
 });
   
-// Higher values are better...
+// Higher values are better (e.g. Fuel demo above)...
 // Must begin with 0 or min.
 ...dynameter({
 	...,
 	regions: {
-		0: 'error',  // 'error' if less than 0.5.
-		0.5: 'warn',  // 'warn' if less than 1.5, but 0.5 or more.
-		1.5: 'normal' // 'normal' if 1.5 or more.
+		0: 'error',  // 'error' if less than 0.5 gallon.
+		0.5: 'warn',  // 'warn' if less than 1.5 gallons, but 0.5 gallon or more.
+		1.5: 'normal' // 'normal' if 1.5 gallons or more.
 	}
 });</pre>
 				[See <a href="#demoHdr">Demos</a>]
