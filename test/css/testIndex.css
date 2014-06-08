@@ -1,0 +1,7 @@
+h2#qunit-banner {
+	height: 12px;
+}
+p#qunit-testresult {
+	font-size: 110%;
+	font-weight: bold;
+}
