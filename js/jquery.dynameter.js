@@ -11,9 +11,12 @@
             }
         };
 
-        var settings = $.extend( {}, defaults, options) ;
+        var settings = $.extend({}, defaults, options);
 
         settings._range = settings.max - settings.min;
+        settings._clrRef0 = 'normal';
+        settings._clrRef1 = 'warn';
+        settings._clrRef2 = 'error';
 
         this.changeValue =  function ( myVal )  { 
             var $this = $(this);
@@ -49,8 +52,8 @@
                 var myDeg = myRelVal / myRange * 180;
                 $this.find('.dm-maskDiv').css({
                     '-webkit-transform': 'rotate(' + myDeg + 'deg)',
-                    '-moz-transform': 'rotate(' + myDeg + 'deg)',
                     '-ms-transform': 'rotate(' + myDeg + 'deg)',
+                    '-moz-transform': 'rotate(' + myDeg + 'deg)',
                     'border-radius': 'rotate(' + myDeg + 'deg)'
                 });
                 // Set/update dm-value attr.
@@ -59,6 +62,28 @@
 
             // Initialize once.
             if (!$this.hasClass('dm-wrapperDiv')) {
+                // Skip init if settings are invalid.
+                if (settings.value < settings.min ||
+                    settings.value > settings.max ||
+                    settings.min > settings.max) {
+                    throw new Error("DynaMeter initialization failed -- invalid value/min/max settings.");
+                    return false;
+                }
+                var currClrRef;
+                for (key in settings.regions) {
+                    currClrRef = settings.regions[key];
+                    if (currClrRef != settings._clrRef0 &&
+                        currClrRef != settings._clrRef1 &&
+                        currClrRef != settings._clrRef2) {
+                        throw new Error("DynaMeter initialization failed -- invalid region color-key.");
+                        return false;
+                    }
+                    if (key < settings.min || key > settings.max) {
+                        throw new Error("DynaMeter initialization failed -- invalid region value.");
+                        return false;
+                    }
+                }
+
                 $this.addClass('dm-wrapperDiv');
                 $this.data('dm-id', ('dm-' + new Date().getTime()));
                 $this.data('dm-min', settings.min);
@@ -96,10 +121,14 @@
                 var colorStops = [];  // Color-ref by angle, based on settings.regions.
                 var keyIdx = 0;
                 for (key in settings.regions) {
-                    // If there's no beginning-value region, prepend one using 'normal' as color-ref.
-                    if (key > settings.min && keyIdx == 0) {
+                    // If there's no min-value starting region, prepend one using 'normal' as color-ref.
+                    if (keyIdx == 0 && key > settings.min) {
                         colorStops.push([getAngleFromValue(settings.min), 'normal']);
                         keyIdx++;
+                        // If starting region is still "normal" w/ non-min-value, skip this key.
+                        if (settings.regions[key] == 'normal') {
+                            continue;
+                        }
                     }
                     colorStops.push([getAngleFromValue(key), settings.regions[key]]);
                     keyIdx++;
