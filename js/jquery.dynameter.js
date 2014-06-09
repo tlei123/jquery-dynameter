@@ -21,9 +21,17 @@
         this.changeValue =  function ( myVal )  { 
             var $this = $(this);
             var myMin = $this.data('dm-min');
+            var myMax = $this.data('dm-max');
             var myRange = $this.data('dm-range');
             // Update value text.
             $this.find('.dm-innerDiv .dm-valueP').html(myVal);
+            // Ensure value is in-range.
+            if (myVal < myMin) {
+                myVal = myMin;
+            }
+            if (myVal > myMax) {
+                myVal = myMax;
+            }
             // Rotate mask div.
             var myRelVal = myVal - myMin;
             var myDeg = myRelVal / myRange * 180;
@@ -65,7 +73,7 @@
                 // Skip init if settings are invalid.
                 if (settings.value < settings.min ||
                     settings.value > settings.max ||
-                    settings.min > settings.max) {
+                    settings.min >= settings.max) {
                     throw new Error("DynaMeter initialization failed -- invalid value/min/max settings.");
                     return false;
                 }
