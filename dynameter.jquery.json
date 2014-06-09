@@ -7,7 +7,7 @@
         "meter",
         "display"
     ],
-    "version": "0.2.3",
+    "version": "0.3.0",
     "author": {
         "name": "Tze Lei",
         "url": "http://tze1.com/"
@@ -30,6 +30,6 @@
     "docs": "https://github.com/tlei123/jquery-dynameter",
     "bugs": "https://github.com/tlei123/jquery-dynameter/issues",
     "dependencies": {
-        "jquery": ">=1.10"
+        "jquery": ">=1.10.2"
     }
 }
