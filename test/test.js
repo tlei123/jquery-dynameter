@@ -69,7 +69,7 @@ module("Init");
 				max: INIT_MAX
 			});
 		} catch (error) {
-			ok(error != null, "Expecting value-below-min init to return error -- '" + error + "'.");
+			ok(error !== null, "Expecting value-below-min init to return error -- '" + error + "'.");
 		}
 	});
 
@@ -82,7 +82,7 @@ module("Init");
 				max: INIT_MAX
 			});
 		} catch (error) {
-			ok(error != null, "Expecting value-above-max init to return error -- '" + error + "'.");
+			ok(error !== null, "Expecting value-above-max init to return error -- '" + error + "'.");
 		}
 	});
 
@@ -98,7 +98,7 @@ module("Init");
 				}
 			});
 		} catch (error) {
-			ok(error != null, "Expecting wrong-region-clrRef init to return error -- '" + error + "'.");
+			ok(error !== null, "Expecting wrong-region-clrRef init to return error -- '" + error + "'.");
 		}
 	});
 
@@ -114,7 +114,7 @@ module("Init");
 				}
 			});
 		} catch (error) {
-			ok(error != null, "Expecting wrong-region-value init to return error -- '" + error + "'.");
+			ok(error !== null, "Expecting wrong-region-value init to return error -- '" + error + "'.");
 		}
 	});
 
@@ -140,7 +140,7 @@ module("Init");
 		var $dm = initDiv();
 		var dmDataRange = $dm.data(DATA_RANGE_ATTR);
 		var initRange = INIT_MAX - INIT_MIN;
-		equal(dmDataRange, initRange, "Expecting dm-range attribute value to match test-calculated value.")
+		equal(dmDataRange, initRange, "Expecting dm-range attribute value to match test-calculated value.");
 	});
 
 	test("NormalRegionIsCorrect_EmptyInit", function () {

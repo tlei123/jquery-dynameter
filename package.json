@@ -1,0 +1,27 @@
+{
+  "name": "jquery.dynameter",
+  "version": "0.4.0",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.3.3",
+    "grunt-contrib-qunit": "^0.5.1",
+    "grunt-contrib-uglify": "~0.4.0"
+  },
+  "author": {
+    "name": "Tzechiu Lei",
+    "email": "tclei2009@gmail.com",
+    "url": "http://tze1.com/"
+  },
+  "description": "A jQuery plugin that transforms your empty DIV into a dynamic, semi-circular value-meter.",
+  "keywords": [
+    "jQuery",
+    "plugin",
+    "dynamic",
+    "meter"
+  ],
+  "homepage": "http://tze1.com/dynameter/",
+  "bugs": "https://github.com/tlei123/jquery-dynameter/issues?state=open",
+  "license": "AFL-3.0"
+}

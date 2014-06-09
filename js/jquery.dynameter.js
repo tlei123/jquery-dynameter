@@ -75,20 +75,17 @@
                     settings.value > settings.max ||
                     settings.min >= settings.max) {
                     throw new Error("DynaMeter initialization failed -- invalid value/min/max settings.");
-                    return false;
                 }
                 var currClrRef;
-                for (key in settings.regions) {
+                for (var key in settings.regions) {
                     currClrRef = settings.regions[key];
                     if (currClrRef != settings._clrRef0 &&
                         currClrRef != settings._clrRef1 &&
                         currClrRef != settings._clrRef2) {
                         throw new Error("DynaMeter initialization failed -- invalid region color-key.");
-                        return false;
                     }
                     if (key < settings.min || key > settings.max) {
                         throw new Error("DynaMeter initialization failed -- invalid region value.");
-                        return false;
                     }
                 }
 
@@ -128,17 +125,17 @@
                 // Color stops for indicator color-bands [[angle, color-reference],...].
                 var colorStops = [];  // Color-ref by angle, based on settings.regions.
                 var keyIdx = 0;
-                for (key in settings.regions) {
+                for (var key2 in settings.regions) {
                     // If there's no min-value starting region, prepend one using 'normal' as color-ref.
-                    if (keyIdx == 0 && key > settings.min) {
+                    if (keyIdx === 0 && key2 > settings.min) {
                         colorStops.push([getAngleFromValue(settings.min), 'normal']);
                         keyIdx++;
                         // If starting region is still "normal" w/ non-min-value, skip this key.
-                        if (settings.regions[key] == 'normal') {
+                        if (settings.regions[key2] == 'normal') {
                             continue;
                         }
                     }
-                    colorStops.push([getAngleFromValue(key), settings.regions[key]]);
+                    colorStops.push([getAngleFromValue(key2), settings.regions[key2]]);
                     keyIdx++;
                 }
                 var colorStopsLength = colorStops.length;
