@@ -23,8 +23,9 @@
 		<p>jQuery-UI Slider instances were added below to demonstrate real-time value updates.<br>Drag a handle to update the corresponding DynaMeter above:</p>
 		<div id="payloadSliderDiv"></div><div id="fuelSliderDiv"></div>
 		<p>After <a href="#setupHdr">stylesheet and scripts setup</a>, the Payload (above-left) demo was &ldquo;DynaMeter-ized&rdquo; with:</p>
-			<pre class="sh_javascript">$( function () {
-	var $myPayloadMeter = $('#payloadMeterDiv').dynameter({
+			<pre class="sh_javascript">var $myPayloadMeter;
+$( function () {
+	$myPayloadMeter = $('#payloadMeterDiv').dynameter({
 		// REQUIRED.
 		label: 'payload',
 		value: 500,
@@ -111,7 +112,7 @@
 			</li>
 		</ol>
 		<h2 id="collabHdr">Collaborators Welcome!</h2>
-		<p>Come join the fun!  Either <a href="mailto:tclei2009@gmail.com">email me</a> to join the core development team, or <a href="https://github.com/tlei123/jquery-dynameter">fork my GitHub repository</a> and send Pull Requests.<br>Currently, I'd like some help with qUnit implementation, add'l. styling options -- maybe some themes, etc.  Thanks in advance!</p>
+		<p>Come join the fun!  Either <a href="mailto:tclei2009@gmail.com">email me</a> to join the core development team, or <a href="https://github.com/tlei123/jquery-dynameter">fork my GitHub repository</a> and send Pull Requests.<br>Currently, I'd like some help with qUnit tests, Grunt-build implementation, add'l. styling options -- maybe some themes, etc.  Thanks in advance!</p>
 	</div>
 
 	<script type="text/javascript" src="js/libs/jquery-1.10.2.min.js"></script>
@@ -119,12 +120,13 @@
 	<script type="text/javascript" src="js/libs/jquery.snippet.min.js"></script>
 	<script type="text/javascript" src="js/jquery.dynameter.js"></script>
 	<script type="text/javascript">
+		var $myPayloadMeter, $myFuelMeter;
 		$( function () {
 			// No need to declare DynaMeter vars outside this anonymous function, 
 			// because the value-update code's also inside here.
 
 			// Initialize payload meter and slider.
-		    var $myPayloadMeter = $("div#payloadMeterDiv").dynameter({
+		    $myPayloadMeter = $("div#payloadMeterDiv").dynameter({
 		    	width: 200,
 		    	label: 'payload',
 		    	value: 500,
@@ -147,7 +149,7 @@
 		    });
 
 		    // Initialize score meter and slider.
-		    var $myScoreMeter = $("div#fuelMeterDiv").dynameter({
+		    $myFuelMeter = $("div#fuelMeterDiv").dynameter({
 		    	width: 200,
 		    	label: 'fuel',
 		    	value: 7.5,
