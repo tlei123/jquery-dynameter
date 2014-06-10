@@ -163,11 +163,12 @@ module("Init");
 		equal(actualNormalAngle, 0, "Expecting normal region angle to be 0, setting only warn & error regions.");
 	});
 
-	test("ReturnsDmObject", function () {
-		var $dm = initDiv();
+	test("MethodIsChainable", function () {
+		var $dm = initDiv().addClass('postInitClass');
 		var $dmIsDefined = (typeof $dm !== 'undefined');
 		var $dmIsObject = (typeof $dm === 'object');
-		ok($dmIsDefined && $dmIsObject, "Expecting returned jQuery object to be defined.");
+		var $dmHasTestClass = $dm.hasClass('postInitClass');
+		ok($dmIsDefined && $dmIsObject && $dmHasTestClass, "Expecting init method to be chainable.");
 	});
 
 	test("HasChangeValueMethod", function () {
