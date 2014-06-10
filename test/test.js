@@ -60,7 +60,7 @@ function getAngleFromStyle ($myDiv) {
 
 module("Init");
 
-	test("SkipsInvalidInit_ValueBelowMin", function () {
+	test("BlocksInvalidInit_ValueBelowMin", function () {
 		try {
 			var $dm = $(TEST_DIV_$ID).dynameter({
 				label: INIT_LABEL,
@@ -73,7 +73,7 @@ module("Init");
 		}
 	});
 
-	test("SkipsInvalidInit_ValueAboveMax", function () {
+	test("BlocksInvalidInit_ValueAboveMax", function () {
 		try {
 			var $dm = $(TEST_DIV_$ID).dynameter({
 				label: INIT_LABEL,
@@ -86,7 +86,7 @@ module("Init");
 		}
 	});
 
-	test("SkipsInvalidInit_WrongRegionClrRef", function () {
+	test("BlocksInvalidInit_WrongRegionClrRef", function () {
 		try {
 			var $dm = $(TEST_DIV_$ID).dynameter({
 				label: INIT_LABEL,
@@ -102,7 +102,7 @@ module("Init");
 		}
 	});
 
-	test("SkipsInvalidInit_WrongRegionValue", function () {
+	test("BlocksInvalidInit_WrongRegionValue", function () {
 		try {
 			var $dm = $(TEST_DIV_$ID).dynameter({
 				label: INIT_LABEL,
