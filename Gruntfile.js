@@ -23,8 +23,21 @@ module.exports = function(grunt) {
       }
     },
 
-    qunit: {
-      files: ['test/index.html']
+    connect: {
+      server: {
+        options: {
+          hostname: 'localhost'
+        }
+      }
+    },
+
+    blanket_qunit: {
+      all: {
+        options: {
+          urls: ['http://localhost:8000/test/index.html?coverage=true&gruntReport'],
+          threshold: 95
+        }
+      }
     },
 
     concat: {
@@ -79,7 +92,12 @@ module.exports = function(grunt) {
           mode: 'zip'
         },
         files: [
-          {expand: true, cwd: 'dist/<%= pkg.name %>-<%= pkg.version %>', src: ['**'], dest: '<%= pkg.name %>-<%= pkg.version %>/'}
+          {
+            expand: true, 
+            cwd: 'dist/<%= pkg.name %>-<%= pkg.version %>', 
+            src: ['**'], 
+            dest: '<%= pkg.name %>-<%= pkg.version %>/'
+          }
         ]
       }
     }
@@ -88,13 +106,14 @@ module.exports = function(grunt) {
   // Load the required plugins.
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-blanket-qunit');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
 
   // Grunt task(s).
-  grunt.registerTask('default', ['clean:pre', 'jshint', 'qunit', 'concat', 'cssmin', 'uglify', 'compress', 'clean:post']);
-  grunt.registerTask('test', ['jshint', 'qunit']);
+  grunt.registerTask('default', ['clean:pre', 'jshint', 'connect', 'blanket_qunit:all', 'concat', 'cssmin', 'uglify', 'compress', 'clean:post']);
+  grunt.registerTask('test', ['jshint', 'connect', 'blanket_qunit:all']);
 };
