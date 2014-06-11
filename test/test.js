@@ -86,7 +86,7 @@ module("Init");
 		}
 	});
 
-	test("BlocksInvalidInit_WrongRegionClrRef", function () {
+	test("BlocksInvalidInit_RegionColorKeyUndefined", function () {
 		try {
 			var $dm = $(TEST_DIV_$ID).dynameter({
 				label: INIT_LABEL,
@@ -98,23 +98,39 @@ module("Init");
 				}
 			});
 		} catch (error) {
-			ok(error !== null, "Expecting wrong-region-clrRef init to return error -- '" + error + "'.");
+			ok(error !== null, "Expecting undefined-region-color-key init to return error -- '" + error + "'.");
 		}
 	});
 
-	test("BlocksInvalidInit_WrongRegionValue", function () {
+	test("BlocksInvalidInit_RegionValueBelowMin", function () {
 		try {
 			var $dm = $(TEST_DIV_$ID).dynameter({
 				label: INIT_LABEL,
 				value: INIT_VALUE,
-				min: INIT_MIN,
+				min: INIT_MIN, // 0
 				max: INIT_MAX,
 				regions: {
 					'-1': 'normal'
 				}
 			});
 		} catch (error) {
-			ok(error !== null, "Expecting wrong-region-value init to return error -- '" + error + "'.");
+			ok(error !== null, "Expecting below-min-region-value init to return error -- '" + error + "'.");
+		}
+	});
+
+	test("BlocksInvalidInit_RegionValueAboveMax", function () {
+		try {
+			var $dm = $(TEST_DIV_$ID).dynameter({
+				label: INIT_LABEL,
+				value: INIT_VALUE,
+				min: INIT_MIN, // 0
+				max: INIT_MAX,
+				regions: {
+					11: 'normal'
+				}
+			});
+		} catch (error) {
+			ok(error !== null, "Expecting above-max-region-value init to return error -- '" + error + "'.");
 		}
 	});
 
@@ -160,7 +176,7 @@ module("Init");
 			}
 		});
 		var actualNormalAngle = getAngleFromStyle($dm.find(REGION_CLASS_$NORMAL));
-		equal(actualNormalAngle, 0, "Expecting normal region angle to be 0, setting only warn & error regions.");
+		equal(actualNormalAngle, 0, "Expecting normal region angle to be 0 by default, init-setting only warn & error regions.");
 	});
 
 	test("MethodIsChainable", function () {
