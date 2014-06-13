@@ -15,7 +15,7 @@
 	<div id="container">
 		<h1>jQuery DynaMeter Plugin</h1>
 		<p>This jQuery Plugin transforms a &lt;div&gt; of your choice into a dynamic, semi-circular meter display.<br>
-			<a href="dist/jquery.dynameter-0.5.1.zip">DOWNLOAD</a>, or <a href="https://github.com/tlei123/jquery-dynameter" target="_blank">Fork on GitHub</a>!</p>
+			<a id="downloadLink" href="https://github.com/tlei123/jquery-dynameter/releases/latest">DOWNLOAD</a>, or <a href="https://github.com/tlei123/jquery-dynameter" target="_blank">Fork on GitHub</a>!</p>
 		<p>Requires <a href="http://www.jquery.com/" target="_blank">jQuery</a> 1.10.2 or newer</p>
 
 		<h2 id="demoHdr">Demos</h2>
@@ -113,6 +113,7 @@ $( function () {
 		</ol>
 		<h2 id="collabHdr">Collaborators Welcome!</h2>
 		<p>Come join the fun!  Either <a href="mailto:tclei2009@gmail.com">email me</a> to join the core development team, or <a href="https://github.com/tlei123/jquery-dynameter">fork my GitHub repository</a> and send Pull Requests.<br>Currently, I'd like some help with qUnit tests, Grunt-build implementation, add'l. styling options -- maybe some themes, etc.  Thanks in advance!</p>
+		<p class="copyrightP">Copyright &copy; 2014 Tzechiu Lei.  <a href="license.txt">MIT license</a>.</p>
 	</div>
 
 	<script type="text/javascript" src="js/libs/jquery-1.10.2.min.js"></script>
@@ -170,6 +171,11 @@ $( function () {
 		    	slide: function (evt, ui) {
 		    		$myFuelMeter.changeValue((ui.value).toFixed(1));
 		    	}
+		    });
+
+		    // Update download link to latest version based on package.json.
+		    $.get('package.json', function (data) {
+		    	$('a#downloadLink').attr('href', 'dist/jquery.' + data.name + '-' + data.version + '.zip');
 		    });
 
 			// Initialize code panels.

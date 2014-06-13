@@ -1,35 +1,31 @@
 {
-    "name": "dynameter",
-    "title": "jQuery DynaMeter",
-    "description": "jQuery plugin for dynamic, semi-circular value meter.  Transforms your empty div into a meter that supports real-time value changes.  Works in Chrome, Firefox, and IE9+.",
-    "keywords": [
-        "dynamic",
-        "meter",
-        "display"
-    ],
-    "version": "0.5.1",
-    "author": {
-        "name": "Tze Lei",
-        "url": "http://tze1.com/"
-    },
-    "maintainers": [
-        {
-            "name": "Tze Lei",
-            "email": "tclei2009@gmail.com",
-            "url": "http://tze1.com/"
-        }
-    ],
-    "licenses": [
-        {
-            "type": "AFL-3",
-            "url": "http://opensource.org/licenses/AFL-3.0"
-        }
-    ],
-    "homepage": "http://tze1.com/dynameter/",
-    "download": "http://tze1.com/dynameter/dist/jquery.dynameter-0.5.1.zip",
-    "docs": "https://github.com/tlei123/jquery-dynameter",
-    "bugs": "https://github.com/tlei123/jquery-dynameter/issues",
-    "dependencies": {
-        "jquery": ">=1.10.2"
+  "name": "dynameter",
+  "version": "0.5.3",
+  "title": "jQuery-DynaMeter",
+  "author": {
+    "name": "Tzechiu Lei",
+    "email": "tclei2009@gmail.com",
+    "url": "http://tze1.com/"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://tze1.com/dynameter/license.txt"
     }
+  ],
+  "dependencies": {
+    "jquery": ">=1.10.2"
+  },
+  "description": "A jQuery plugin that transforms your empty DIV into a dynamic, semi-circular value-meter.  2.6k minified.  Works in Chrom, Firefox, IE9+.",
+  "keywords": [
+    "jQuery",
+    "plugin",
+    "dynamic",
+    "meter",
+    "gauge"
+  ],
+  "docs": "https://github.com/tlei123/jquery-dynameter",
+  "download": "http:/tze1.com/dist/jquery.dynameter-0.5.3.zip",
+  "bugs": "https://github.com/tlei123/jquery-dynameter/issues",
+  "homepage": "http://tze1.com/dynameter/"
 }

@@ -6,12 +6,12 @@ module.exports = function(grunt) {
 
     clean: {
       pre: ["dist"],
-      post: ["dist/<%= pkg.name %>-<%= pkg.version %>"]
+      post: ["dist/jquery.<%= pkg.name %>-<%= pkg.version %>"]
     },
 
     jshint: {
       // define the files to lint
-      files: ['Gruntfile.js', 'js/<%= pkg.name %>.js', 'test/test.js'],
+      files: ['Gruntfile.js', 'js/jquery.<%= pkg.name %>.js', 'test/test.js'],
       // configure JSHint (documented at http://www.jshint.com/docs/)
       options: {
           // more options here if you want to override JSHint defaults
@@ -40,66 +40,67 @@ module.exports = function(grunt) {
       }
     },
 
-    concat: {
-      // Using concat to merly move files; project has only one css and one js file.
-      options: {
-        // define a string to put between each file in the concatenated output
-        separator: ';'
-      },
-      dist_css: {
-        // the files to concatenate
-        src: ['css/<%= pkg.name %>.css'],
-        // the location of the resulting JS file
-        dest: 'dist/<%= pkg.name %>-<%= pkg.version %>/<%= pkg.name %>-<%= pkg.version %>.css'
-      },
-      dist_js: {
-        src: ['js/<%= pkg.name %>.js'],
-        dest: 'dist/<%= pkg.name %>-<%= pkg.version %>/<%= pkg.name %>-<%= pkg.version %>.js'
-      },
-      dist_less: {
-        // the files to concatenate
-        src: ['css/<%= pkg.name %>.less'],
-        // the location of the resulting JS file
-        dest: 'dist/<%= pkg.name %>-<%= pkg.version %>/<%= pkg.name %>-<%= pkg.version %>.less'
+    copy: {
+      main: {
+        files: [
+          // Copy stylesheet and javascript
+          {
+            expand: true, 
+            flatten: true,
+            src: ['css/jquery.<%= pkg.name %>.css', 'js/jquery.<%= pkg.name %>.js'], 
+            dest: 'dist/jquery.<%= pkg.name %>-<%= pkg.version %>/', 
+            filter: 'isFile'
+          },
+        ]
       }
     },
-
+// .
     cssmin: {
       // ext setting hacked to work around absorption of '.dynameter'.
       minify: {
         expand: true,
         cwd: 'css/',
-        src: ['jquery.dynameter.css', '!*.min.css'],
-        dest: 'dist/<%= pkg.name %>-<%= pkg.version %>/',
-        ext: '.dynameter-<%= pkg.version %>.min.css'
+        src: ['jquery.<%= pkg.name %>.css', '!*.min.css'],
+        dest: 'dist/jquery.<%= pkg.name %>-<%= pkg.version %>/',
+        ext: '.<%= pkg.name %>-<%= pkg.version %>.min.css'
       }
     },
 
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %>-<%= pkg.version %>.min.js <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        banner: '/*! jquery.<%= pkg.name %>-<%= pkg.version %>.min.js <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'js/<%= pkg.name %>.js',
-        dest: 'dist/<%= pkg.name %>-<%= pkg.version %>/<%= pkg.name %>-<%= pkg.version %>.min.js'
+        src: 'js/jquery.<%= pkg.name %>.js',
+        dest: 'dist/jquery.<%= pkg.name %>-<%= pkg.version %>/jquery.<%= pkg.name %>-<%= pkg.version %>.min.js'
       }
     },
 
     compress: {
       main: {
         options: {
-          archive: 'dist/<%= pkg.name %>-<%= pkg.version %>.zip',
+          archive: 'dist/jquery.<%= pkg.name %>-<%= pkg.version %>.zip',
           mode: 'zip'
         },
         files: [
           {
             expand: true, 
-            cwd: 'dist/<%= pkg.name %>-<%= pkg.version %>', 
+            cwd: 'dist/jquery.<%= pkg.name %>-<%= pkg.version %>', 
             src: ['**'], 
-            dest: '<%= pkg.name %>-<%= pkg.version %>/'
+            dest: 'jquery.<%= pkg.name %>-<%= pkg.version %>/'
           }
         ]
       }
+    },
+
+    jquerymanifest: {
+        options: {
+            source: grunt.file.readJSON('package.json'),
+            overrides: {
+                title: "jQuery-DynaMeter",
+                download: "http:/tze1.com/dist/jquery.<%= pkg.name %>-<%= pkg.version %>.zip"
+            }
+        }
     }
   });
 
@@ -108,12 +109,29 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-blanket-qunit');
-  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-jquerymanifest');
 
   // Grunt task(s).
-  grunt.registerTask('default', ['clean:pre', 'jshint', 'connect', 'blanket_qunit:all', 'concat', 'cssmin', 'uglify', 'compress', 'clean:post']);
-  grunt.registerTask('test', ['jshint', 'connect', 'blanket_qunit:all']);
+  grunt.registerTask('default', [
+    'clean:pre', 
+    'jshint', 
+    'connect', 
+    'blanket_qunit:all', 
+    'copy', 
+    'cssmin', 
+    'uglify', 
+    'compress', 
+    'clean:post',
+    'jquerymanifest'
+  ]);
+
+  grunt.registerTask('test', [
+    'jshint', 
+    'connect', 
+    'blanket_qunit:all'
+  ]);
 };

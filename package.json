@@ -1,6 +1,29 @@
 {
-  "name": "jquery.dynameter",
-  "version": "0.5.1",
+  "name": "dynameter",
+  "title": "jQuery Dynameter",
+  "version": "0.5.3",
+  "author": {
+    "name": "Tzechiu Lei",
+    "email": "tclei2009@gmail.com",
+    "url": "http://tze1.com/"
+  },
+  "description": "A jQuery plugin that transforms your empty DIV into a dynamic, semi-circular value-meter.  2.6k minified.  Works in Chrom, Firefox, IE9+.",
+  "keywords": [
+    "jQuery",
+    "plugin",
+    "dynamic",
+    "meter",
+    "gauge"
+  ],
+  "homepage": "http://tze1.com/dynameter/",
+  "docs": "https://github.com/tlei123/jquery-dynameter",
+  "bugs": "https://github.com/tlei123/jquery-dynameter/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://tze1.com/dynameter/license.txt"
+    }
+  ],
   "devDependencies": {
     "blanket": "^1.1.6",
     "grunt": "^0.4.5",
@@ -8,26 +31,13 @@
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-compress": "^0.9.1",
     "grunt-contrib-connect": "^0.8.0",
+    "grunt-contrib-copy": "^0.5.0",
     "grunt-contrib-cssmin": "~0.9.0",
     "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-connect": "^0.8.0",
     "grunt-contrib-uglify": "~0.4.0",
-    "grunt-istanbul": "^0.3.0",
-    "grunt-qunit-istanbul": "^0.4.5"
+    "grunt-jquerymanifest": "^0.1.4"
   },
-  "author": {
-    "name": "Tzechiu Lei",
-    "email": "tclei2009@gmail.com",
-    "url": "http://tze1.com/"
-  },
-  "description": "A jQuery plugin that transforms your empty DIV into a dynamic, semi-circular value-meter.  2.5k minified.",
-  "keywords": [
-    "jQuery",
-    "plugin",
-    "dynamic",
-    "meter"
-  ],
-  "homepage": "http://tze1.com/dynameter/",
-  "bugs": "https://github.com/tlei123/jquery-dynameter/issues?state=open",
-  "license": "AFL-3.0"
+  "dependencies": {
+    "jquery": ">=1.10.2"
+  }
 }
