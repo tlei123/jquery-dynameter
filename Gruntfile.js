@@ -67,12 +67,22 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      options: {
-        banner: '/*! jquery.<%= pkg.name %>-<%= pkg.version %>.min.js <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-      },
       build: {
         src: 'js/jquery.<%= pkg.name %>.js',
         dest: 'dist/jquery.<%= pkg.name %>-<%= pkg.version %>/jquery.<%= pkg.name %>-<%= pkg.version %>.min.js'
+      }
+    },
+
+    usebanner: {
+      main: {
+        options: {
+          position: 'top',
+          banner: '/*! <%= pkg.title %> by <%= pkg.author.name %>\n*   <%= pkg.homepage %>\n*   v<%= pkg.version %>\n*   <%= grunt.template.today("yyyy-mm-dd") %>\n*   Copyright (c) 2014 Tzechiu Lei.  MIT license. */\n',
+          linebreak: true
+        },
+        files: {
+          src: 'dist/jquery.<%= pkg.name %>-<%= pkg.version %>/*'
+        }
       }
     },
 
@@ -112,6 +122,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-jquerymanifest');
 
@@ -123,7 +134,8 @@ module.exports = function(grunt) {
     'blanket_qunit:all', 
     'copy', 
     'cssmin', 
-    'uglify', 
+    'uglify',
+    'usebanner', 
     'compress', 
     'clean:post',
     'jquerymanifest'

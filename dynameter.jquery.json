@@ -1,6 +1,6 @@
 {
   "name": "dynameter",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "title": "jQuery-DynaMeter",
   "author": {
     "name": "Tzechiu Lei",
@@ -16,7 +16,7 @@
   "dependencies": {
     "jquery": ">=1.10.2"
   },
-  "description": "A jQuery plugin that transforms your empty DIV into a dynamic, semi-circular value-meter.  2.6k minified.  Works in Chrom, Firefox, IE9+.",
+  "description": "A jQuery plugin that transforms your empty DIV into a dynamic, semi-circular value-meter.  2.6k minified.  Works in Chrome35+, Firefox29+, IE9+.",
   "keywords": [
     "jQuery",
     "plugin",
@@ -25,7 +25,7 @@
     "gauge"
   ],
   "docs": "https://github.com/tlei123/jquery-dynameter",
-  "download": "http://tze1.com/dynameter/dist/jquery.dynameter-0.5.5.zip",
+  "download": "http://tze1.com/dynameter/dist/jquery.dynameter-0.5.6.zip",
   "bugs": "https://github.com/tlei123/jquery-dynameter/issues",
   "homepage": "http://tze1.com/dynameter/"
 }
