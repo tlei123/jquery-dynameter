@@ -98,7 +98,7 @@ module.exports = function(grunt) {
             source: grunt.file.readJSON('package.json'),
             overrides: {
                 title: "jQuery-DynaMeter",
-                download: "http:/tze1.com/dist/jquery.<%= pkg.name %>-<%= pkg.version %>.zip"
+                download: "http:/tze1.com/dynameter/dist/jquery.<%= pkg.name %>-<%= pkg.version %>.zip"
             }
         }
     }

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>jQuery DynaMeter Plugin</title>
+	<link rel="stylesheet" type="text/css" href="css/libs/jquery-ui-1.10.3.custom.min.css">
+	<link rel="stylesheet" type="text/css" href="css/libs/jquery.snippet.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.dynameter-0.5.3.min.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+
+	<div id="container">
+		<h1>jQuery DynaMeter Plugin</h1>
+		<p>This jQuery Plugin transforms a &lt;div&gt; of your choice into a dynamic, semi-circular meter display.<br>
+			<a id="downloadLink" href="https://github.com/tlei123/jquery-dynameter/releases/latest">DOWNLOAD</a>, or <a href="https://github.com/tlei123/jquery-dynameter" target="_blank">Fork on GitHub</a>!</p>
+		<p>Requires <a href="http://www.jquery.com/" target="_blank">jQuery</a> 1.10.2 or newer</p>
+
+		<h2 id="demoHdr">Demos</h2>
+		<div id="payloadMeterDiv"></div><div id="fuelMeterDiv"></div>
+		<p>jQuery-UI Slider instances were added below to demonstrate real-time value updates.<br>Drag a handle to update the corresponding DynaMeter above:</p>
+		<div id="payloadSliderDiv"></div><div id="fuelSliderDiv"></div>
+		<p>After <a href="#setupHdr">stylesheet and scripts setup</a>, the Payload (above-left) demo was &ldquo;DynaMeter-ized&rdquo; with:</p>
+			<pre class="sh_javascript">var $myPayloadMeter;
+$( function () {
+	$myPayloadMeter = $('#payloadMeterDiv').dynameter({
+		// REQUIRED.
+		label: 'payload',
+		value: 500,
+		unit: 'lbs',
+		min: 0,
+		max: 1000,
+		regions: {
+			800: 'warn',
+			900: 'error'
+		}
+	});
+	// jQuery-UI Slider.
+	$('#payloadSliderDiv').slider({
+		min: 0,
+		max: 1000,
+		value: 500,
+		step: 10,
+		slide: function (evt, ui) {
+			$myPayloadMeter.changeValue(ui.value);
+		}
+	});
+});</pre>
+
+		<h2 id="setupHdr">Setup</h2>
+		<ol>
+			<li>
+				<strong>Download</strong> <a href="dist/jquery.dynameter-0.5.1.zip" title="Download ZIP file">jquery.dynameter.zip</a>
+			</li>
+			<li>Add the DynaMeter stylesheet link to your &lt;head&gt; section<br>
+				[change path and customize rules to suit your file-structure and styling]:<br>
+				<pre class="sh_html">&lt;link rel="stylesheet" type="text/css" href="css/jquery.dynameter.css"&gt;</pre>
+			</li>
+			<li>Add the jQuery core script tag to bottom of your &lt;body&gt; section<br>
+				[change path to suit your file-structure]:<br>
+				<pre class="sh_html">&lt;script type="text/javascript" src="js/jquery.min.js"&gt;&lt;/script&gt;</pre>
+			</li>
+			<li>Add the jQuery Dynameter script tag to bottom of your &lt;body&gt; section, BELOW jQuery core<br>
+				[change path to suit your file-structure]:<br>
+				<pre class="sh_html">&lt;script type="text/javascript" src="js/jquery.dynameter.js"&gt;&lt;/script&gt;</pre>
+			</li>
+		</ol>
+		<h2 id="usageHdr">Usage</h2>
+		<ol>
+			<li>Create a &lt;div&gt; tag in your &lt;body&gt; section with a unique id -- you'll need to identify this element specifically in order to update its value-indicator.<br>
+				<pre class="sh_html">&lt;div id="payloadMeterDiv"&gt;&lt;/div&gt;</pre></li>
+			<li>DynaMeter-ize your DIV tag (initialize it) with your own script tag BELOW the DynaMeter script tag, where you declare a variable and call the DynaMeter method on your &lt;div&gt; for it.<br>
+				You'll use this var to update the indicator-value.  The required initialization settings are shown below:<br>
+				<pre class="sh_javascript">&lt;script type="text/javascript"&gt;
+	var $payloadMeter = null;
+	$( function () {
+		$payloadMeter = $('div#payloadMeterDiv').dynameter({
+			// REQUIRED.
+			label: 'Payload',
+			value: 500,
+			unit: 'lbs',
+			min: 0,
+			max: 1000
+		});
+	});
+&lt;/script&gt;</pre></li>
+			<li>To update your DynaMeter-instance value-indicator in your own script, call DynaMeter's public changeValue method on your variable:<br>
+				<pre class="sh_javascript">$payloadMeter.changeValue(238);</pre></li>
+			<li>To add warning and/or error regions to your DynaMeter instance, add a regions object to your initialization settings:<br>
+				<pre class="sh_javascript">// Higher values are worse (e.g. Payload demo above)...
+...dynameter({
+	...,
+	regions: {
+		800: 'warn',  // 'warn' if 850 pounds or more, but less than 950 pounds.
+		900: 'error'  // 'error' if 950 pounds or more.
+	}
+});
+  
+// Higher values are better (e.g. Fuel demo above)...
+// Must begin with 0 or min.
+...dynameter({
+	...,
+	regions: {
+		0: 'error',  // 'error' if less than 0.5 gallon.
+		0.5: 'warn',  // 'warn' if less than 1.5 gallons, but 0.5 gallon or more.
+		1.5: 'normal' // 'normal' if 1.5 gallons or more.
+	}
+});</pre>
+				[See <a href="#demoHdr">Demos</a>]
+			</li>
+		</ol>
+		<h2 id="collabHdr">Collaborators Welcome!</h2>
+		<p>Come join the fun!  Either <a href="mailto:tclei2009@gmail.com">email me</a> to join the core development team, or <a href="https://github.com/tlei123/jquery-dynameter">fork my GitHub repository</a> and send Pull Requests.<br>Currently, I'd like some help with qUnit tests, Grunt-build implementation, add'l. styling options -- maybe some themes, etc.  Thanks in advance!</p>
+		<p class="copyrightP">Copyright &copy; 2014 Tzechiu Lei.  <a href="license.txt">MIT license</a>.</p>
+	</div>
+
+	<script type="text/javascript" src="js/libs/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/libs/jquery-ui-1.10.3.custom.min.js"></script>
+	<script type="text/javascript" src="js/libs/jquery.snippet.min.js"></script>
+	<script type="text/javascript" src="js/jquery.dynameter-0.5.3.min.js"></script>
+	<script type="text/javascript">
+		var $myPayloadMeter, $myFuelMeter;
+		$( function () {
+			// No need to declare DynaMeter vars outside this anonymous function, 
+			// because the value-update code's also inside here.
+
+			// Initialize payload meter and slider.
+		    $myPayloadMeter = $("div#payloadMeterDiv").dynameter({
+		    	width: 200,
+		    	label: 'payload',
+		    	value: 500,
+		    	min: 0,
+		    	max: 1000,
+		    	unit: 'lbs',
+		    	regions: {
+		    		800: 'warn',
+		    		900: 'error'
+		    	}
+		    });
+		    $('div#payloadSliderDiv').slider({
+		    	min: 0,
+		    	max: 1000,
+		    	value: 500,
+		    	step: 10,
+		    	slide: function (evt, ui) {
+		    		$myPayloadMeter.changeValue(ui.value);
+		    	}
+		    });
+
+		    // Initialize score meter and slider.
+		    $myFuelMeter = $("div#fuelMeterDiv").dynameter({
+		    	width: 200,
+		    	label: 'fuel',
+		    	value: 7.5,
+		    	min: 0.0,
+		    	max: 15.0,
+		    	unit: 'gal',
+		    	regions: {
+		    		0: 'error',
+		    		.5: 'warn',
+		    		1.5: 'normal'
+		    	}
+		    });
+		    $('div#fuelSliderDiv').slider({
+		    	min: 0.0,
+		    	max: 15.0,
+		    	value: 7.5,
+		    	step: .1,
+		    	slide: function (evt, ui) {
+		    		$myFuelMeter.changeValue((ui.value).toFixed(1));
+		    	}
+		    });
+
+		    // Update download link to latest version based on package.json.
+		    $.get('package.json', function (data) {
+		    	$('a#downloadLink').attr('href', 'dist/jquery.' + data.name + '-' + data.version + '.zip');
+		    });
+
+			// Initialize code panels.
+			$('pre.sh_html').snippet('html',{style:"dull",showNum:false});
+			$('pre.sh_javascript').snippet('javascript',{style:"dull",showNum:false});
+		});
+	</script>
+
+</body>
+
+</html>

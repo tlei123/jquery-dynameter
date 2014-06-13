@@ -1,6 +1,6 @@
 {
   "name": "dynameter",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "title": "jQuery-DynaMeter",
   "author": {
     "name": "Tzechiu Lei",
@@ -25,7 +25,7 @@
     "gauge"
   ],
   "docs": "https://github.com/tlei123/jquery-dynameter",
-  "download": "http:/tze1.com/dist/jquery.dynameter-0.5.3.zip",
+  "download": "http:/tze1.com/dynameter/dist/jquery.dynameter-0.5.4.zip",
   "bugs": "https://github.com/tlei123/jquery-dynameter/issues",
   "homepage": "http://tze1.com/dynameter/"
 }
