@@ -20,7 +20,7 @@ Link jquery core library and jquery.dynameter.js into your body section, at the 
 
 Add a div with a unique id to your body section:
 
-    <div id="#meterDiv"></div>
+    <div id="meterDiv"></div>
 
 Initialize and assign it to a variable [put this script tag below the DynaMeter script tag]:
 
