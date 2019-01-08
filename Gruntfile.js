@@ -14,6 +14,7 @@ module.exports = function(grunt) {
       files: ['Gruntfile.js', 'js/jquery.<%= pkg.name %>.js', 'test/test.js'],
       // configure JSHint (documented at http://www.jshint.com/docs/)
       options: {
+        reporterOutput: "",
           // more options here if you want to override JSHint defaults
         globals: {
           jQuery: true,
@@ -26,16 +27,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          hostname: 'localhost'
-        }
-      }
-    },
-
-    blanket_qunit: {
-      all: {
-        options: {
-          urls: ['http://localhost:8000/test/index.html?coverage=true&gruntReport'],
-          threshold: 95
+          keepalive: true,
         }
       }
     },
@@ -118,7 +110,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-blanket-qunit');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -130,20 +121,18 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'clean:pre', 
     'jshint', 
-    'connect', 
-    'blanket_qunit:all', 
     'copy', 
     'cssmin', 
     'uglify',
     'usebanner', 
     'compress', 
     'clean:post',
-    'jquerymanifest'
+    'jquerymanifest',
+    'connect'
   ]);
 
   grunt.registerTask('test', [
     'jshint', 
     'connect', 
-    'blanket_qunit:all'
   ]);
 };
