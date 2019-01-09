@@ -41,7 +41,7 @@ div.dm-wrapperDiv div.dm-maskDiv {
   -moz-border-radius: 100px 100px 0 0;
   -ms-border-radius: 100px 100px 0 0;
   border-radius: 100px 100px 0 0;
-  border: 2px solid #999999;
+  border: 2px solid #999;
   border-bottom: 0;
   -webkit-transform-origin: center bottom;
   -moz-transform-origin: center bottom;
@@ -49,16 +49,16 @@ div.dm-wrapperDiv div.dm-maskDiv {
   transform-origin: center bottom;
 }
 div.dm-wrapperDiv div.dm-bgClrDiv.normal {
-  background-color: #228b22;
+  background-color: #228B22;
 }
 div.dm-wrapperDiv div.dm-bgClrDiv.warn {
-  background-color: #daa520;
+  background-color: #DAA520;
 }
 div.dm-wrapperDiv div.dm-bgClrDiv.error {
-  background-color: #ff0000;
+  background-color: #FF0000;
 }
 div.dm-wrapperDiv div.dm-maskDiv {
-  background-color: #dddddd;
+  background-color: #ddd;
   z-index: 4;
 }
 div.dm-wrapperDiv div.dm-innerDiv {
@@ -68,11 +68,11 @@ div.dm-wrapperDiv div.dm-innerDiv {
   -moz-border-radius: 80px 80px 0 0;
   -ms-border-radius: 80px 80px 0 0;
   border-radius: 80px 80px 0 0;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #eee;
   width: 160px;
   height: 80px;
-  padding-top: .7em;
-  background-color: #eeeeee;
+  padding-top: 0.7em;
+  background-color: #eee;
   text-align: center;
   text-transform: uppercase;
   z-index: 5;
@@ -86,7 +86,7 @@ div.dm-wrapperDiv div.dm-innerDiv p {
 }
 div.dm-wrapperDiv div.dm-innerDiv p.dm-valueP {
   font-size: 210%;
-  line-height: .85;
+  line-height: 0.85;
 }
 div.dm-wrapperDiv div.dm-innerDiv p.dm-unitP {
   margin-top: 0;

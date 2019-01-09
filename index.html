@@ -4,8 +4,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>jQuery DynaMeter Plugin</title>
-	<link rel="stylesheet" type="text/css" href="css/libs/jquery-ui-1.10.3.custom.min.css">
 	<link rel="stylesheet" type="text/css" href="css/libs/jquery.snippet.min.css">
+	<link rel="stylesheet" href="css/libs/jquery.mobile-1.4.5.min.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery.dynameter.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
@@ -19,9 +19,17 @@
 		<p>Requires <a href="http://www.jquery.com/" target="_blank">jQuery</a> 1.10.2 or newer</p>
 
 		<h2 id="demoHdr">Demos</h2>
-		<div id="payloadMeterDiv"></div><div id="fuelMeterDiv"></div>
-		<p>jQuery-UI Slider instances were added below to demonstrate real-time value updates.<br>Drag a handle to update the corresponding DynaMeter above:</p>
-		<div id="payloadSliderDiv"></div><div id="fuelSliderDiv"></div>
+		<div id="payloadMeterDiv"></div>
+		<div id="fuelMeterDiv"></div>
+		<p>jQuery-Mobile Slider instances were added below to demonstrate real-time value updates.<br>Drag a handle to update the corresponding DynaMeter above:</p>
+		<div id="payloadSliderDiv" class="ui-slider">
+			<label for="payloadslider">Change Payload:</label>
+			<input type="range" id="payloadslider" name="payloadslider" min="0" max="1000" value="500" step="10">
+		</div>
+		<div id="fuelSliderDiv">
+			<label for="fuelslider">Change Fuel:</label>
+			<input type="range" id="fuelslider" name="fuelslider" min="0.0" max="15.0" value="7.5" step=".1">
+		</div>
 		<p>After <a href="#setupHdr">stylesheet and scripts setup</a>, the Payload (above-left) demo was &ldquo;DynaMeter-ized&rdquo; with:</p>
 			<pre class="sh_javascript">var $myPayloadMeter;
 $( function () {
@@ -35,16 +43,6 @@ $( function () {
 		regions: {
 			800: 'warn',
 			900: 'error'
-		}
-	});
-	// jQuery-UI Slider.
-	$('#payloadSliderDiv').slider({
-		min: 0,
-		max: 1000,
-		value: 500,
-		step: 10,
-		slide: function (evt, ui) {
-			$myPayloadMeter.changeValue(ui.value);
 		}
 	});
 });</pre>
@@ -117,7 +115,7 @@ $( function () {
 	</div>
 
 	<script type="text/javascript" src="js/libs/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="js/libs/jquery-ui-1.10.3.custom.min.js"></script>
+	<script type="text/javascript" src="js/libs/jquery.mobile-1.4.5.min.js"></script>
 	<script type="text/javascript" src="js/libs/jquery.snippet.min.js"></script>
 	<script type="text/javascript" src="js/jquery.dynameter.js"></script>
 	<script type="text/javascript">
@@ -139,14 +137,9 @@ $( function () {
 		    		900: 'error'
 		    	}
 		    });
-		    $('div#payloadSliderDiv').slider({
-		    	min: 0,
-		    	max: 1000,
-		    	value: 500,
-		    	step: 10,
-		    	slide: function (evt, ui) {
-		    		$myPayloadMeter.changeValue(ui.value);
-		    	}
+		    $('#payloadslider').slider().on('change', function (e) {
+		    	// console.log('#payloadslider value changed to ' + this.value);
+		    	$myPayloadMeter.changeValue(this.value);
 		    });
 
 		    // Initialize score meter and slider.
@@ -163,14 +156,9 @@ $( function () {
 		    		1.5: 'normal'
 		    	}
 		    });
-		    $('div#fuelSliderDiv').slider({
-		    	min: 0.0,
-		    	max: 15.0,
-		    	value: 7.5,
-		    	step: .1,
-		    	slide: function (evt, ui) {
-		    		$myFuelMeter.changeValue((ui.value).toFixed(1));
-		    	}
+		    $('#fuelslider').slider().on('change', function (e) {
+		    	// console.log('#fuelslider value changed to ' + this.value);
+		    	$myFuelMeter.changeValue(this.value);
 		    });
 
 		    // Update download link to latest version based on package.json.

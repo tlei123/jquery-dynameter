@@ -46,7 +46,20 @@ module.exports = function(grunt) {
         ]
       }
     },
-// .
+
+    less: {
+      dynameter: {
+        files: {
+          'css/jquery.<%= pkg.name %>.css': 'css/jquery.<%= pkg.name %>.less'
+        }
+      },
+      demopage: {
+        files: {
+          'css/index.css': 'css/index.less'
+        }
+      }
+    },
+
     cssmin: {
       // ext setting hacked to work around absorption of '.dynameter'.
       minify: {
@@ -111,6 +124,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-banner');
@@ -121,15 +135,18 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'clean:pre', 
     'jshint', 
-    'copy', 
+    'copy',
+    'less:dynameter',
+    'less:demopage',
     'cssmin', 
     'uglify',
     'usebanner', 
     'compress', 
     'clean:post',
-    'jquerymanifest',
-    'connect'
+    'jquerymanifest'
   ]);
+
+  grunt.registerTask('develop', ['default', 'connect']);
 
   grunt.registerTask('test', [
     'jshint', 
