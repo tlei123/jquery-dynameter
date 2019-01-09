@@ -36,9 +36,10 @@
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-less": "^2.0.0",
     "grunt-contrib-uglify": "~0.4.0",
-    "grunt-jquerymanifest": "^0.1.4"
+    "grunt-jquerymanifest": "^0.1.4",
+    "jquery-mobile": "^1.4.1"
   },
   "dependencies": {
-    "jquery": ">=1.10.2"
+    "jquery": "2.1.4"
   }
 }

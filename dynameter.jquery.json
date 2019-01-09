@@ -14,7 +14,7 @@
     }
   ],
   "dependencies": {
-    "jquery": ">=1.10.2"
+    "jquery": "2.1.4"
   },
   "description": "A jQuery plugin that transforms your empty DIV into a dynamic, semi-circular value-meter.  2.6k minified.  Works in Chrome35+, Firefox29+, IE9+.",
   "keywords": [

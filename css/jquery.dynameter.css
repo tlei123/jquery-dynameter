@@ -9,10 +9,10 @@ div.dm-wrapperDiv {
   padding: 0;
   zoom: 1;
   overflow: hidden;
-  width: 200px;
-  height: 100px;
+  width: 300px;
+  height: 150px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
   line-height: 1;
 }
@@ -32,15 +32,15 @@ div.dm-wrapperDiv div {
 }
 div.dm-wrapperDiv div.dm-bgClrDiv,
 div.dm-wrapperDiv div.dm-maskDiv {
-  width: 200px;
-  height: 100px;
+  width: 300px;
+  height: 150px;
 }
 div.dm-wrapperDiv div.dm-bgClrDiv,
 div.dm-wrapperDiv div.dm-maskDiv {
-  -webkit-border-radius: 100px 100px 0 0;
-  -moz-border-radius: 100px 100px 0 0;
-  -ms-border-radius: 100px 100px 0 0;
-  border-radius: 100px 100px 0 0;
+  -webkit-border-radius: 150px 150px 0 0;
+  -moz-border-radius: 150px 150px 0 0;
+  -ms-border-radius: 150px 150px 0 0;
+  border-radius: 150px 150px 0 0;
   border: 2px solid #999;
   border-bottom: 0;
   -webkit-transform-origin: center bottom;
@@ -63,14 +63,14 @@ div.dm-wrapperDiv div.dm-maskDiv {
 }
 div.dm-wrapperDiv div.dm-innerDiv {
   bottom: 0;
-  left: 20px;
-  -webkit-border-radius: 80px 80px 0 0;
-  -moz-border-radius: 80px 80px 0 0;
-  -ms-border-radius: 80px 80px 0 0;
-  border-radius: 80px 80px 0 0;
+  left: 30px;
+  -webkit-border-radius: 120px 120px 0 0;
+  -moz-border-radius: 120px 120px 0 0;
+  -ms-border-radius: 120px 120px 0 0;
+  border-radius: 120px 120px 0 0;
   border-bottom: 1px solid #eee;
-  width: 160px;
-  height: 80px;
+  width: 240px;
+  height: 120px;
   padding-top: 0.7em;
   background-color: #eee;
   text-align: center;

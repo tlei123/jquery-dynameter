@@ -1,4 +1,4 @@
-@meterWidth: 200px;
+@meterWidth: 300px;
 @clrBandWidth: @meterWidth * 0.10;
 @outerDivBorder: 2px solid #999;
 @outerDivBgColor: #090;
@@ -62,7 +62,7 @@ div.dm-wrapperDiv {
 		height: @meterWidth / 2;
 	}
 	div.dm-bgClrDiv, div.dm-maskDiv {
-		.xBorderRadiusDm;
+		.xBorderRadiusDm(@meterWidth / 2);
 		border: @outerDivBorder;
 		border-bottom: 0;
 		-webkit-transform-origin: center bottom;
