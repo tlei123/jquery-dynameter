@@ -1,11 +1,11 @@
 repo_name: tlei123/jquery-dynameter
-report_id: e887f81c2491b21a4e8808978856a7ba
+report_id: 18d8cf0c4bef6106a541d67625a62367
 repo_type: Public
-timestamp: '2023-11-12T02:29:33+00:00'
+timestamp: '2023-12-14T10:27:30+00:00'
 requested_by: tlei123
 provider: github
 branch: master
-detected_tools_count: 15
+detected_tools_count: 18
 tools:
 - name: CSS 3
   description: The latest evolution of the Cascading Style Sheets language
@@ -36,10 +36,21 @@ tools:
   category: Libraries
   sub_category: Javascript UI Libraries
   image_url: https://img.stackshare.io/service/1021/lxEKmMnB_400x400.jpg
-  detection_source_url: package.json
+  detection_source_url: https://github.com/tlei123/jquery-dynameter/blob/master/package.json
   detection_source: package.json
   last_updated_by: Tze-chiu Lei
   last_updated_on: 2014-06-13 06:12:32.000000000 Z
+- name: pgvector
+  description: Open-source vector similarity search for Postgres
+  website_url: https://github.com/pgvector/pgvector/
+  open_source: false
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Database Tools
+  image_url: https://img.stackshare.io/service/109221/default_b888cdf5617d936aa6aacf130911906955508639.png
+  detection_source: LICENSE.txt
+  last_updated_by: Tze-chiu Lei
+  last_updated_on: 2014-06-13 03:13:23.000000000 Z
 - name: Git
   description: Fast, scalable, distributed revision control system
   website_url: http://git-scm.com/
@@ -49,6 +60,19 @@ tools:
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
   detection_source: Repo Metadata
+- name: Grunt
+  description: The JavaScript Task Runner
+  website_url: http://gruntjs.com/
+  version: 0.4.5
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: JS Build Tools / JS Task Runners
+  image_url: https://img.stackshare.io/service/845/falgg2jybmhgk16y62lr.png
+  detection_source_url: https://github.com/tlei123/jquery-dynameter/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: Tze-chiu Lei
+  last_updated_on: 2014-06-13 06:12:32.000000000 Z
 - name: npm
   description: The package manager for JavaScript.
   website_url: https://www.npmjs.com/
@@ -60,6 +84,26 @@ tools:
   detection_source: package.json
   last_updated_by: Tze-chiu Lei
   last_updated_on: 2014-06-09 05:59:09.000000000 Z
+- name: HTML
+  description: Hypertext Markup Language for creating web pages.
+  website_url: http://
+  open_source: false
+  hosted_saas: false
+  image_url: https://img.stackshare.io/service/2270/no-img-open-source.png
+  detection_source: index.html
+  last_updated_by: Tze-chiu Lei
+  last_updated_on: 2014-05-22 02:11:23.000000000 Z
+- name: LangChain
+  description: Build AI apps with LLMs through composability
+  website_url: https://github.com/hwchase17/langchain
+  open_source: true
+  hosted_saas: false
+  category: Communications
+  sub_category: Large Language Model Tools
+  image_url: https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg
+  detection_source: LICENSE.txt
+  last_updated_by: Tze-chiu Lei
+  last_updated_on: 2014-06-13 03:13:23.000000000 Z
 - name: blanket
   description: Seamless js code coverage
   package_url: https://www.npmjs.com/blanket
@@ -70,43 +114,10 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16545/default_d522554c6a41cb28d922d6d3ad32ad4afa0e3bb5.png
-  detection_source_url: package.json
+  detection_source_url: https://github.com/tlei123/jquery-dynameter/blob/master/package.json
   detection_source: package.json
   last_updated_by: Tze-chiu Lei
   last_updated_on: 2014-06-13 03:13:23.000000000 Z
-- name: grunt
-  description: The JavaScript Task Runner
-  package_url: https://www.npmjs.com/grunt
-  version: 0.4.5
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/15835/default_0b10af8ca19c215f781dc07442e75bdc831089d0.png
-  detection_source_url: package.json
-  detection_source: package.json
-  last_updated_by: Tze-chiu Lei
-  last_updated_on: 2014-06-13 06:12:32.000000000 Z
-  vulnerabilities:
-  - name: Race Condition in Grunt
-    cve_id: CVE-2022-1537
-    cve_url: https://github.com/advisories/GHSA-rm36-94g8-835r
-    detected_date: May 26
-    severity: high
-    first_patched: 1.5.3
-  - name: Arbitrary Code Execution in grunt
-    cve_id: CVE-2020-7729
-    cve_url: https://github.com/advisories/GHSA-m5pj-vjjf-4m3h
-    detected_date: Aug 22
-    severity: high
-    first_patched: 1.3.0
-  - name: Path Traversal in Grunt
-    cve_id: CVE-2022-0436
-    cve_url: https://github.com/advisories/GHSA-j383-35pm-c5h4
-    detected_date: Apr 27
-    severity: moderate
-    first_patched: 1.5.2
 - name: grunt-banner
   description: Adds a simple banner to files
   package_url: https://www.npmjs.com/grunt-banner
@@ -117,7 +128,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/17430/default_f52a9ea80d1a46080182faf142d844b81ca11aa6.png
-  detection_source_url: package.json
+  detection_source_url: https://github.com/tlei123/jquery-dynameter/blob/master/package.json
   detection_source: package.json
   last_updated_by: Tze-chiu Lei
   last_updated_on: 2014-06-13 06:12:32.000000000 Z
@@ -131,7 +142,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15939/default_8b5680d4e916298d08363c291a0d6e34c07ceb15.png
-  detection_source_url: package.json
+  detection_source_url: https://github.com/tlei123/jquery-dynameter/blob/master/package.json
   detection_source: package.json
   last_updated_by: Tze-chiu Lei
   last_updated_on: 2014-06-13 06:12:32.000000000 Z
@@ -145,7 +156,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16797/default_661bbd7f9556b6c5c0b8be11cd13e1813fc5c977.png
-  detection_source_url: package.json
+  detection_source_url: https://github.com/tlei123/jquery-dynameter/blob/master/package.json
   detection_source: package.json
   last_updated_by: Tze-chiu Lei
   last_updated_on: 2014-06-13 06:12:32.000000000 Z
@@ -159,7 +170,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16236/default_380ae3d73e22c7ca1f42b96479bcd0095dabc0d3.png
-  detection_source_url: package.json
+  detection_source_url: https://github.com/tlei123/jquery-dynameter/blob/master/package.json
   detection_source: package.json
   last_updated_by: Tze-chiu Lei
   last_updated_on: 2014-06-13 06:12:32.000000000 Z
@@ -173,7 +184,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16056/default_c7b204838197013798409fa2b4dafce450edc7fb.png
-  detection_source_url: package.json
+  detection_source_url: https://github.com/tlei123/jquery-dynameter/blob/master/package.json
   detection_source: package.json
   last_updated_by: Tze-chiu Lei
   last_updated_on: 2014-06-13 06:12:32.000000000 Z
@@ -187,7 +198,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16324/default_b5c8f3c8e46d368f74a982d06d7f13291fe651ea.png
-  detection_source_url: package.json
+  detection_source_url: https://github.com/tlei123/jquery-dynameter/blob/master/package.json
   detection_source: package.json
   last_updated_by: Tze-chiu Lei
   last_updated_on: 2014-06-13 06:12:32.000000000 Z
@@ -201,7 +212,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15898/default_59a1b5716eefa3750c20936c3d53ff13a6390ee1.png
-  detection_source_url: package.json
+  detection_source_url: https://github.com/tlei123/jquery-dynameter/blob/master/package.json
   detection_source: package.json
   last_updated_by: Tze-chiu Lei
   last_updated_on: 2014-06-13 06:12:32.000000000 Z
@@ -215,7 +226,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15954/default_ac622bc364a601d766b9a6f6039f191492f54d65.png
-  detection_source_url: package.json
+  detection_source_url: https://github.com/tlei123/jquery-dynameter/blob/master/package.json
   detection_source: package.json
   last_updated_by: Tze-chiu Lei
   last_updated_on: 2014-06-13 06:12:32.000000000 Z
